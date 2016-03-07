@@ -15,6 +15,17 @@ class WikisController < ApplicationController
     end
   end
   
+  def update
+    @wiki = Wiki.find(params[:id])
+    @wiki.assign_attributes(wiki_params)
+    
+    if @wiki.save
+      redirect_to @wiki, notice: "Wiki Updated"
+    else
+      flash[:error] = "Error updating wiki"
+    end
+  end
+
   
   private
   

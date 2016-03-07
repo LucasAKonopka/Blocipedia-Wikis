@@ -44,4 +44,18 @@ RSpec.describe WikisController, type: :controller do
       expect(updated_wiki.body).to eq new_body
     end
   end
+  
+  describe "DELETE destroy" do
+    it "deletes the wiki" do
+      delete :destroy, {id: my_wiki.id}
+      
+      count = Wiki.where({id: my_wiki.id}).size
+      expect(count).to eq 0
+    end
+    
+    it "redirect to wiki index" do
+      delete :destroy, {id: my_wiki.id}
+      expect(response).to redirect_to wikis_path
+    end
+  end
 end

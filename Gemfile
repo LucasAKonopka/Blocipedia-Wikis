@@ -34,9 +34,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-gem 'rspec-rails', '~> 3.0'
+ gem 'rspec-rails', '~> 3.0'
  gem 'pry-rails'
  gem 'shoulda'
+ gem 'faker'
 end
 
 group :development do
@@ -50,7 +51,6 @@ group :development do
 end
 
 gem 'bootstrap-sass'
-
 gem 'devise'
 gem 'pundit'
 

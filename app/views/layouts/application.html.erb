@@ -17,7 +17,7 @@
       <div class="pull-right user-info">
         <% if user_signed_in? %>
           Logged in as <strong><%= current_user.email %></strong>.
-          <% if current_user.role == 2 %>
+          <% if current_user.role == 'premium' %>
             <strong>Premium</strong>
           <% else %>
             <strong>FREE</strong> |

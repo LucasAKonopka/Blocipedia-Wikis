@@ -50,10 +50,11 @@ group :development do
   
 end
 
+gem 'figaro', '1.0'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
-
+gem 'stripe'
 gem 'letter_opener', :group => :development
 
 

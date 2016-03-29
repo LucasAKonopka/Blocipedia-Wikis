@@ -1,9 +1,9 @@
 include Amount
+include ChargesHelper
+
 class ChargesController < ApplicationController
   def create
-    #amount in cents
-    @amount = 1500
-    
+   
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
@@ -17,12 +17,13 @@ class ChargesController < ApplicationController
       )
       
     flash[:notice] = "Thanks for joining Blocipedia, #{current_user.email}!"
+    
+    upgrade_user(current_user)
     redirect_to root_path(current_user)
     
     rescue Stripe::CardError => e
       flash[:alert] = e.message
       redirect_to new_charge_path
-    
   end
   
   def new

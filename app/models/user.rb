@@ -21,4 +21,14 @@ class User < ActiveRecord::Base
     self.role ||= :member
   end
   
+  def upgrade
+    self.role = 'premium'
+    self.save
+  end
+  
+  def downgrade
+    self.role = 'member'
+    self.save
+  end
+  
 end

@@ -18,10 +18,11 @@ class ChargesController < ApplicationController
       
     flash[:notice] = "Thanks for joining Blocipedia, #{current_user.email}!"
     
-    upgrade_user(current_user)
+    current_user.upgrade
     redirect_to root_path(current_user)
     
     rescue Stripe::CardError => e
+      current_user.downgrade_user
       flash[:alert] = e.message
       redirect_to new_charge_path
   end

@@ -19,6 +19,7 @@
           Logged in as <strong><%= current_user.email %></strong>.
           <% if current_user.role == 'premium' %>
             <strong>Premium</strong>
+            
           <% else %>
             <strong>FREE</strong> |
             <%= link_to "Upgrade to Premium", new_charge_path, :class => 'navbar-link' %>

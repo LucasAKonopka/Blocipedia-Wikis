@@ -57,7 +57,7 @@ gem 'devise'
 gem 'pundit'
 gem 'stripe'
 gem 'letter_opener', :group => :development
-
+gem 'redcarpet'
 
 
 

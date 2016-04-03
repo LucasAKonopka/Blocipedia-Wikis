@@ -1,3 +1,3 @@
 <h1><%= @wiki.title %></h1>
 
-<p><%= @wiki.body %></p>
+<p><%= markdown_text(@wiki.body) %></p>

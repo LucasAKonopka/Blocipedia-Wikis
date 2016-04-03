@@ -31,5 +31,16 @@
     <h3>Create private Wikis</h3>
   </div>
   
+  
+   
+  <div class="col-md-3">
+    <% if current_user && current_user.role == 'premium' %>
+      <p>Need to Downgrade your account?</p>
+      <%= button_to "Downgrade", user_downgrade_user_path(current_user), method: :post %>
+    <% end %>
+  </div>
+  
 </div>
+
+
 

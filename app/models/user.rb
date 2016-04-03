@@ -28,7 +28,14 @@ class User < ActiveRecord::Base
   
   def downgrade
     self.role = 'member'
+    make_wikis_public
     self.save
+  end
+  
+  def make_wikis_public
+    self.wikis.each do |w| 
+      w.update(private: false)
+    end
   end
   
 end

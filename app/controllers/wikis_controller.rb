@@ -2,7 +2,7 @@ class WikisController < ApplicationController
   
   
   def index
-    @wikis = Wiki.all
+    @wikis = (current_user ? Wiki.not_private(current_user) : Wiki.free)
     authorize @wikis
   end
   
@@ -11,6 +11,7 @@ class WikisController < ApplicationController
   end
   
   def new
+    @user = current_user.id
     @wiki = Wiki.new
     authorize @wiki
   end
@@ -18,6 +19,7 @@ class WikisController < ApplicationController
   def create
     @wiki = Wiki.new(wiki_params)
     authorize @wiki
+    @wiki.user = current_user
     
     if @wiki.save
       redirect_to @wiki, notice: "Wiki created successfully"
@@ -56,7 +58,7 @@ class WikisController < ApplicationController
   private
   
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private)
   end
   
 end

@@ -39,6 +39,8 @@ group :development, :test do
  gem 'shoulda'
  gem 'faker'
  gem 'capybara'
+ gem 'better_errors'
+ gem 'binding_of_caller'
 end
 
 group :development do
@@ -58,6 +60,7 @@ gem 'pundit'
 gem 'stripe'
 gem 'letter_opener', :group => :development
 gem 'redcarpet'
+gem 'pry'
 
 
 

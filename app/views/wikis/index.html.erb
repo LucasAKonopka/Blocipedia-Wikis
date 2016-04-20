@@ -3,7 +3,6 @@
 <div class="row">
   <h2>Wikis</h2>
   <% @wikis.each do |w| %>
-  <h3><%= link_to w.title, w %> </h3>
-  
+    <h3><%= link_to w.title, w %> </h3>
   <% end %>
 </div>

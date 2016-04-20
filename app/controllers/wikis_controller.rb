@@ -2,8 +2,7 @@ class WikisController < ApplicationController
   
   
   def index
-    @wikis = (current_user ? Wiki.not_private(current_user) : Wiki.free)
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
   end
   
   def show
@@ -27,6 +26,11 @@ class WikisController < ApplicationController
       flash[:error] = "Error creating Wiki"
       render :new
     end
+  end
+  
+  def edit
+    @users = User.all
+    @wiki = Wiki.find(params[:id])
   end
   
   def update
@@ -58,7 +62,7 @@ class WikisController < ApplicationController
   private
   
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :body, :private, user_ids: [])
   end
   
 end

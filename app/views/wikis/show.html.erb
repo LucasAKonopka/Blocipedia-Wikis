@@ -1,3 +1,10 @@
 <h1><%= @wiki.title %></h1>
 
 <p><%= markdown_text(@wiki.body) %></p>
+
+<h3>Collaborators</h3>
+<ul>
+  <% @wiki.collaborators.each do |c| %>
+    <li><%= User.find(c.user_id).email %></li>
+  <% end %>
+</ul>
